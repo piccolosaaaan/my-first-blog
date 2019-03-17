@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>index</title>
+    <style>
+        body {
+            padding: 10px;
+            color:red;
+            font-size: 150%;
+            background-color:#FFFF00;
+        }
+        .navbar-nav li {
+            float: left;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <nav class="navbar navbar-default ">
+      <div class="container-fluid">
+      <!-- ヘッダー部分 ================ -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Bootstap</a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav_target">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      <!-- 中央のナビゲーション部分 ================ -->
+        <div class="collapse navbar-collapse" id="nav_target">
+          <ul class="nav navbar-nav">
+            <!-- リンクのみ -->
+              <li class="active"><a href="#">Nav 1</a></li>
+              <li><a href="#">Nav 2</a></li>
+            <!-- Nav3 ドロップダウン -->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nav3 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">link 1</a></li>
+                  <li><a href="#">link 2</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">link3</a></li>
+                </ul>
+              </li>
+            <!-- Nav4 ドロップダウン -->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nav4 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">link 1</a></li>
+                  <li><a href="#">link 2</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">link3</a></li>
+                </ul>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <p>あなたの悩みを書いてね</p>
+    <textarea ></textarea>
+    <input  type="submit" value="押してね">
+
+    {% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+    <footer>
+
+    </footer>
+</body>
+</html>
